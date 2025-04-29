@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Пополнение баланса криптовалютной биржи">
+    <meta name="keywords" content="криптовалюта, пополнение, биржа, bitcoin, qiwi, банковская карта">
+    <meta name="author" content="Crypto Exchange">
+    <meta property="og:title" content="Пополнение баланса">
+    <meta property="og:description" content="Пополнение баланса криптовалютной биржи">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourusername.github.io/пополнить.html">
+    <title>Пополнение баланса | Crypto Exchange</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        :root {
+            --primary-color: #8774e1;
+            --text-color: #000000;
+            --background-color: #ffffff;
+            --border-color: #e3e3e3;
+            --hover-color: #f5f5f5;
+            --secondary-text: #707579;
+            --mobile-padding: 15px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        body {
+            background: var(--background-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: var(--background-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header h1 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+            word-break: break-word;
+        }
+
+        .header p {
+            color: var(--secondary-text);
+            font-size: 14px;
+        }
+
+        .payment-methods {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding: 0 15px;
+        }
+
+        .payment-btn {
+            background: var(--background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 12px;
+            color: var(--text-color);
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            -webkit-tap-highlight-color: transparent;
+            width: 100%;
+        }
+
+        .payment-btn:active {
+            background: var(--hover-color);
+            border-color: var(--primary-color);
+        }
+
+        .payment-btn .icon {
+            font-size: 20px;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--hover-color);
+            border-radius: 8px;
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+
+        .promo-section {
+            background: var(--background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .promo-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 16px;
+        }
+
+        .promo-input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--hover-color);
+            color: var(--text-color);
+            font-size: 14px;
+            transition: all 0.2s ease;
+            -webkit-appearance: none;
+        }
+
+        .promo-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: var(--background-color);
+        }
+
+        .card-details {
+            display: none;
+            background: var(--background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-details h3 {
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .card-number {
+            font-size: 16px;
+            font-weight: 500;
+            margin: 12px 0;
+            padding: 10px;
+            background: var(--hover-color);
+            border-radius: 8px;
+            text-align: center;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+            word-break: break-all;
+        }
+
+        .support-link {
+            display: block;
+            text-align: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-top: 15px;
+            padding: 10px;
+            background: var(--hover-color);
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+
+        .support-link:active {
+            background: var(--primary-color);
+            color: var(--background-color);
+        }
+
+        .info-text {
+            color: var(--secondary-text);
+            font-size: 12px;
+            text-align: center;
+            margin-top: 8px;
+            line-height: 1.4;
+        }
+
+        @media (min-width: 481px) {
+            :root {
+                --mobile-padding: 20px;
+            }
+
+            .container {
+                max-width: 500px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .header p {
+                font-size: 16px;
+            }
+
+            .payment-btn {
+                padding: 16px;
+                font-size: 16px;
+            }
+
+            .payment-btn .icon {
+                font-size: 24px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .card-number {
+                font-size: 18px;
+            }
+
+            .info-text {
+                font-size: 14px;
+            }
+        }
+
+        /* Улучшения для iOS */
+        @supports (-webkit-touch-callout: none) {
+            .payment-btn {
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+            }
+        }
+
+        /* Улучшения для Android */
+        @supports not (-webkit-touch-callout: none) {
+            .payment-btn:active {
+                transform: scale(0.98);
+            }
+        }
+
+        /* Стили для Google Sites */
+        .sites-layout-tile {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .sites-layout-tile-content {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💰 Пополнение баланса</h1>
+            <p>Выберите удобный способ оплаты</p>
+        </div>
+
+        <div class="payment-methods">
+            <div class="payment-btn" onclick="showCardDetails()">
+                <span class="icon">💳</span>
+                Банковская карта
+            </div>
+            <div class="payment-btn" onclick="showQiwiDetails()">
+                <span class="icon">🏦</span>
+                QIWI кошелек
+            </div>
+            <div class="payment-btn" onclick="showBitcoinDetails()">
+                <span class="icon">₿</span>
+                Bitcoin
+            </div>
+            <div class="payment-btn" onclick="openSupport()">
+                <span class="icon">💬</span>
+                Техническая поддержка
+            </div>
+        </div>
+
+        <div class="promo-section">
+            <h3><span class="icon">🎁</span> Промокод</h3>
+            <input type="text" class="promo-input" placeholder="Введите промокод">
+        </div>
+
+        <div class="card-details" id="cardDetails">
+            <h3>Реквизиты для оплаты</h3>
+            <div class="card-number">4276 5500 1234 5678</div>
+            <p class="info-text">После оплаты отправьте скриншот в техническую поддержку</p>
+            <a href="https://t.me/SupportTeam" class="support-link" target="_blank" rel="noopener noreferrer">
+                💬 Перейти в поддержку
+            </a>
+        </div>
+
+        <div class="card-details" id="qiwiDetails">
+            <h3>QIWI кошелек</h3>
+            <div class="card-number">+7 (999) 123-45-67</div>
+            <p class="info-text">После оплаты отправьте скриншот в техническую поддержку</p>
+            <a href="https://t.me/SupportTeam" class="support-link" target="_blank" rel="noopener noreferrer">
+                💬 Перейти в поддержку
+            </a>
+        </div>
+
+        <div class="card-details" id="bitcoinDetails">
+            <h3>Bitcoin адрес</h3>
+            <div class="card-number">bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</div>
+            <p class="info-text">После оплаты отправьте скриншот в техническую поддержку</p>
+            <a href="https://t.me/SupportTeam" class="support-link" target="_blank" rel="noopener noreferrer">
+                💬 Перейти в поддержку
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function showCardDetails() {
+            document.getElementById('cardDetails').style.display = 'block';
+            document.getElementById('qiwiDetails').style.display = 'none';
+            document.getElementById('bitcoinDetails').style.display = 'none';
+        }
+
+        function showQiwiDetails() {
+            document.getElementById('cardDetails').style.display = 'none';
+            document.getElementById('qiwiDetails').style.display = 'block';
+            document.getElementById('bitcoinDetails').style.display = 'none';
+        }
+
+        function showBitcoinDetails() {
+            document.getElementById('cardDetails').style.display = 'none';
+            document.getElementById('qiwiDetails').style.display = 'none';
+            document.getElementById('bitcoinDetails').style.display = 'block';
+        }
+
+        function openSupport() {
+            window.open('https://t.me/SupportTeam', '_blank', 'noopener,noreferrer');
+        }
+
+        // Добавляем обработку свайпов для мобильных устройств
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX) {
+                // Свайп влево
+                const activeDetails = document.querySelector('.card-details[style*="display: block"]');
+                if (activeDetails) {
+                    activeDetails.style.display = 'none';
+                }
+            }
+        }
+
+        // Принудительно устанавливаем ширину для Google Sites
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.container');
+            if (container) {
+                container.style.width = '100%';
+                container.style.maxWidth = '100%';
+            }
+        });
+    </script>
+</body>
+</html>
